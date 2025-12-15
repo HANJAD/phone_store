@@ -25,7 +25,7 @@ const Header = ({ searchTerm, setSearchTerm}) => {
           <Image src={Logo} width={110}></Image>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Collapse id="navbarScroll" className="pb-4 pb-lg-0">
           <Nav
             className="me-auto ms-4 my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
