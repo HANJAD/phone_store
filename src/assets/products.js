@@ -54,7 +54,7 @@ export const products = [
     product_image: redmi15c,
     initial_price: 175000,
     selling_price: 163000,
-    desc: "An entry-level champion with a massive immersive display and a high-capacity battery designed to keep you powered for over 48 hours.",
+    desc: "An entry-level champion with a massive immersive display and a battery designed to keep you powered for over 48 hours.",
     brand: "Xiaomi Redmi",
   },
   {
