@@ -17,12 +17,12 @@ const Header = ({ searchTerm, setSearchTerm}) => {
     boxShadow: "0 0 10px 0.25rem rgba(10, 109, 109, 1)",
     borderColor: "#11ffff",
     outline: "0 none",
-  };
+  }
   return (
-    <Navbar expand="lg" className="bg-info w-auto h-auto mb-5 py-0 fixed-top">
+    <Navbar expand="lg" className="bg-black w-auto h-auto mb-5 py-0 fixed-top">
       <Container fluid className="">
         <Navbar.Brand href="#">
-          <Image src={Logo} width={100}></Image>
+          <Image src={Logo} width={110}></Image>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -38,7 +38,8 @@ const Header = ({ searchTerm, setSearchTerm}) => {
                 display: "inline-block",
                 marginLeft: "20px",
                 textDecoration: "none",
-                color: "#221156",
+                color: "#e9f1eaff",
+                fontWeight: 'bolder'
               }}
             >
               Home
@@ -50,7 +51,8 @@ const Header = ({ searchTerm, setSearchTerm}) => {
                 display: "inline-block",
                 marginLeft: "20px",
                 textDecoration: "none",
-                color: "#221156",
+                color: "#e9f1eaff",
+                fontWeight: 'bolder'
               }}
             >
               Cart{" "}

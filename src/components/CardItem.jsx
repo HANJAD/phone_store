@@ -8,7 +8,7 @@ function CardItem({product}) {
   return (
     <>
         <Card style={{ width: '18rem' }} className='my-3'>
-          <Card.Img variant="top" src={product.product_image} alt={product.name} style={{height: '18rem'}} className='object-fit-cover'/>
+          <Card.Img variant="top" src={product.product_image} alt={product.name} style={{height: '18rem', width: '100%'}} className='object-fit-cover'/>
           <Card.Body>
             <Card.Title>{product.name}</Card.Title>
             <Card.Text>
