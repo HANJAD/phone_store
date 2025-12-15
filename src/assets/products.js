@@ -9,7 +9,7 @@ import Infinix from './images/Infinix.jpg';
 import Tecno from './images/Tecno.jpg';
 import SamsungA16 from './images/SamsungA16.jpg';
 import iphone15 from './images/iphone15.jpg';
-import Pixel8 from './images/Pixel8.jpg';
+import Pixel8 from './images/pixel8.jpg';
 
 export const products = [
   {
