@@ -13,7 +13,7 @@ const Cart = () => {
     return (
       <>
         <Header />
-        <div className="text-center mt-5">
+        <div className="text-center mt-5" style={{marginLeft: '500px'}}>
           <h2>Your cart is empty</h2>
           <Link to="/" className="btn btn-primary mt-3">Go Shopping</Link>
         </div>
@@ -24,7 +24,7 @@ const Cart = () => {
   return (
     <>
       <Header />
-      <div className="container mt-5">
+      <div className="container mt-5 text-center" style={{marginLeft: '300px'}}>
         <h1 className="mb-4">Your Shopping Cart</h1>
         <Table>
           <thead>
