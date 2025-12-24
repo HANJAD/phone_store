@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Unauthorized = () => {
   return (
-    <>
+    <div>
       <h1
         style={{
           marginTop: "200px",
@@ -32,7 +32,7 @@ const Unauthorized = () => {
           GO TO HOMEPAGE
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 

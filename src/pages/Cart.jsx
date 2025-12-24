@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap";
+import { Table, Container, Row, Col, Button } from "react-bootstrap";
 import Header from "../components/Header";
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
@@ -6,68 +6,100 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const { cart, removeFromCart, clearCart } = useCart();
 
-  // Calculate total: sum of (selling_price * quantity)
-  const total = cart.reduce((acc, item) => acc + item.selling_price * item.quantity, 0);
+  const total = cart.reduce(
+    (acc, item) => acc + item.selling_price * item.quantity,
+    0
+  );
 
   if (cart.length === 0) {
     return (
       <>
         <Header />
-        <div className="text-center mt-5" style={{marginLeft: '500px'}}>
-          <h2>Your cart is empty</h2>
-          <Link to="/" className="btn btn-primary mt-3">Go Shopping</Link>
-        </div>
+        <Container className="text-center mt-5 py-5">
+          <h2 className="display-6">Your cart is empty</h2>
+          <Link to="/" className="btn btn-primary mt-3 btn-lg">
+            Go Shopping
+          </Link>
+        </Container>
       </>
     );
   }
 
   return (
-    <>
+    <div className="pb-5">
       <Header />
-      <div className="container mt-5 text-center" style={{marginLeft: '300px'}}>
-        <h1 className="mb-4">Your Shopping Cart</h1>
-        <Table>
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Subtotal</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cart.map((item) => (
-              <tr key={item.id}>
-                <td>
-                  <img src={item.product_image} alt={item.name} style={{ width: '50px', marginRight: '10px' }} />
-                  {item.name}
-                </td>
-                <td>{item.selling_price}</td>
-                <td>{item.quantity}</td>
-                <td>{(item.selling_price * item.quantity).toLocaleString('en-Ng', {style: 'currency', currency: 'NGN'})}</td>
-                <td>
-                  <button 
-                    className="btn btn-danger btn-sm" 
-                    onClick={() => removeFromCart(item.id)}
-                  >
-                    Remove
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+      <Container className="mt-5 pt-5">
+        <Row className="justify-content-center">
+          <Col lg={10}>
+            <h1 className="mb-4 text-center">Your Shopping Cart</h1>
+            
+            {/* Table Responsive prevents the "mushing" effect */}
+            <div className="table-responsive shadow-sm bg-white rounded p-3">
+              <Table hover className="align-middle">
+                <thead className="table-light">
+                  <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cart.map((item) => (
+                    <tr key={item.id}>
+                      <td className="d-flex align-items-center">
+                        <img
+                          src={item.product_image}
+                          alt={item.name}
+                          className="product-img me-3"
+                        />
+                        <span className="fw-bold">{item.name}</span>
+                      </td>
+                      <td>₦{item.selling_price.toLocaleString()}</td>
+                      <td>{item.quantity}</td>
+                      <td className="fw-bold">
+                        {(item.selling_price * item.quantity).toLocaleString(
+                          "en-NG",
+                          { style: "currency", currency: "NGN" }
+                        )}
+                      </td>
+                      <td>
+                        <Button
+                          variant="outline-danger"
+                          size="sm"
+                          onClick={() => removeFromCart(item.id)}
+                        >
+                          Remove
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </div>
 
-        <div className="d-flex justify-content-between align-items-center mt-4">
-          <button className="btn btn-outline-secondary" onClick={clearCart}>Clear Cart</button>
-          <div className="d-flex">
-            <h4>Total: {total.toLocaleString('en-Ng', {style: 'currency', currency: 'NGN'})}</h4>
-            <button className="btn btn-success ms-3">Checkout</button>
-          </div>
-        </div>
-      </div>
-    </>
+            <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 p-3 bg-white shadow-sm rounded">
+              <Button variant="outline-primary" onClick={clearCart} className="mb-3 mb-md-0">
+                Clear Cart
+              </Button>
+              <div className="d-flex align-items-center">
+                <h3 className="mb-0 me-4">
+                  Total:{" "}
+                  <span className="text-success">
+                    {total.toLocaleString("en-NG", {
+                      style: "currency",
+                      currency: "NGN",
+                    })}
+                  </span>
+                </h3>
+                <Button variant="success" size="lg">Checkout</Button>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 
